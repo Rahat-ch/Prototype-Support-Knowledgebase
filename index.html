@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      button{
+        margin-bottom: 20px;
+        margin-right: 10px;
+      }
+      </style>
+  </head>
+  <body>
+<h1>Prototype Knowledgebase</h1>
+
+<h2>Log in Issues</h2>
+
+<div id="wrapper">
+<p>What type of Log in issue is this user facing?</p>
+<button type="button" name="choice" id="password"> Forgot Password</button>
+<button type="button" name="choice" id="integrations"> Integration Specific</button>
+<button type="button" name="choice" id="merge"> Uh-oh Error message</button>
+
+  <div id="appendercontainer">
+    <div id ="appender">
+      </div>
+    <div id="secondappender">
+      </div>
+  </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+  var messageDisplay = document.getElementById("appender");
+  var forgotPassword = document.createElement("p");
+  forgotPassword.innerHTML = "If the user forgot their password they need to reset it. Use the reset password macro."
+  console.log(forgotPassword);
+  var uhoh = document.createElement("p");
+  uhoh.innerHTML = "User has multiple accounts please merge here is a link to the merge tool: enter link here. Once complete this macro: enter macro here"
+
+  document.getElementById("password").addEventListener("click", function(){
+    messageDisplay.innerHTML = " ";
+    messageDisplay.appendChild(forgotPassword);
+});
+
+document.getElementById("merge").addEventListener("click", function(){
+  messageDisplay.innerHTML = " ";
+  messageDisplay.appendChild(uhoh);
+});
+
+var integrations = ["Clever","Canvas","Classlink"]
+var button = document.createElement("button");
+
+
+function intbutton () {
+  for (var i = 0; i < integrations.length; i++) {
+    document.getElementById("appender").innerHTML += "<button>" + integrations[i] + "</button>";
+
+  }
+};
+
+
+document.getElementById("integrations").addEventListener("click", function(){
+  messageDisplay.innerHTML = " ";
+  intbutton();
+  button.classList.add('dynamic');
+});
+
+
+</script>
+  </body>
+</html>
